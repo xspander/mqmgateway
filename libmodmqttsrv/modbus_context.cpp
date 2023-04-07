@@ -92,7 +92,10 @@ ModbusContext::writeModbusRegister(const MsgRegisterValue& msg) {
             retCode = modbus_write_bit(mCtx, msg.mRegisterNumber, msg.mValue == 1 ? TRUE : FALSE);
         break;
         case RegisterType::HOLDING:
-            retCode = modbus_write_register(mCtx, msg.mRegisterNumber, msg.mValue);
+            uint16_t newArrayValue[1];
+            newArrayValue[0] = msg.mValue; 
+            retCode = modbus_write_registers(mCtx, msg.mRegisterNumber, 1, newArrayValue);
+
         break;
         default:
             throw ModbusContextException(std::string("Cannot write, unknown register type ") + std::to_string(msg.mRegisterType));
