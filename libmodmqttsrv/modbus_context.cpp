@@ -94,7 +94,7 @@ ModbusContext::writeModbusRegister(const MsgRegisterValue& msg) {
         case RegisterType::HOLDING:
             uint16_t newArrayValue[1];
             newArrayValue[0] = msg.mValue; 
-            retCode = modbus_write_registers(mCtx, msg.mRegisterNumber, 1, newArrayValue);
+            retCode = modbus_write_registers(mCtx, msg.mRegisterNumber, 2, newArrayValue);
 
         break;
         default:
