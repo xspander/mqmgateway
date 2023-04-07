@@ -101,7 +101,7 @@ ModbusContext::writeModbusRegister(const MsgRegisterValue& msg) {
             throw ModbusContextException(std::string("Cannot write, unknown register type ") + std::to_string(msg.mRegisterType));
     }
     if (retCode == -1)
-        throw ModbusWriteException(std::string("write fn ") + std::to_string(msg.mRegisterNumber) + " failed");
+        throw ModbusWriteException(std::string("write fnblabla ") + std::to_string(msg.mRegisterNumber) + " failed");
 }
 
 } //namespace
